@@ -12,26 +12,34 @@ namespace Wargon.LeoEcsExtention.Unity {
         private MonoEntity entity;
 
         private bool flowed;
+        private SerializedProperty worldProviderProperty;
 
         private void Awake() 
         {
             EntityGUI.Init();
             ComponentTypesList.Init();
         }
-        
+
+        private void OnEnable()
+        {
+            worldProviderProperty = serializedObject.FindProperty("worldProvider");
+        }
+
         public override void OnInspectorGUI() 
         {
             //DrawDefaultInspector();
             entity = (MonoEntity)target;
             if(!entity.runTime)
                 EditorGUI.BeginChangeCheck();
+            
+            worldProviderProperty.objectReferenceValue = EditorGUILayout.ObjectField("World provider", worldProviderProperty.objectReferenceValue, typeof(EcsWorldProvider), false);
 
             if (entity.runTime)
             {
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.Space();
                 if (GUILayout.Button(new GUIContent("Kill Entity"),GUILayout.Width(154), GUILayout.Height(24)))
-                    entity.Entity.Destroy();
+                    entity.entity.Destroy();
                 EditorGUILayout.Space();
                 EditorGUILayout.EndHorizontal();
             }
@@ -45,12 +53,12 @@ namespace Wargon.LeoEcsExtention.Unity {
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Run Time", entity.runTime ? "✔" : "✘", EditorStyles.largeLabel);
-            EditorGUILayout.LabelField($"ID:{entity.Entity.GetInternalId().ToString()}");
+            EditorGUILayout.LabelField($"ID:{entity.entity.GetInternalId().ToString()}");
             EditorGUILayout.EndHorizontal();
             EntityGUI.Vertical(GUI.skin.box, () =>
             {
                 if (entity.runTime)
-                    if (!entity.Entity.IsAlive())
+                    if (!entity.entity.IsAlive())
                     {
                         EditorGUILayout.LabelField("ENTITY DEAD", EditorStyles.whiteLargeLabel);
                         return;
