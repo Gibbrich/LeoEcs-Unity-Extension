@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using DefaultNamespace;
 using Leopotam.Ecs;
-using UnityEngine;
 
 namespace Wargon.LeoEcsExtention.Unity
 {
