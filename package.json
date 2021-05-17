@@ -1,0 +1,10 @@
+{
+  "name": "com.gibbrich.leo-ecs-extensions",
+  "version": "1.0.0",
+  "displayName": "LeoECS Extensions",
+  "description": "Unity integration extensions for LeoECS",
+  "unity": "2019.1",
+  "dependencies": {
+    "com.leopotam.ecs": "https://github.com/Leopotam/ecs.git"
+  }
+}
