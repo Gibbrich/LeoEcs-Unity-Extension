@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using System.Reflection;
+using LesEcsPrefabs.Assets.Attributes;
 
 namespace Wargon.LeoEcsExtention.Unity
 {
@@ -23,7 +25,8 @@ namespace Wargon.LeoEcsExtention.Unity
             return TypesArray;
         }
         public static void Init() {
-            var assembly = Assembly.GetAssembly(typeof(EcsComponentAttribute));
+            var assembly = AppDomain.CurrentDomain.GetAssemblies()
+                .First(asm => asm.GetName().Name == "Assembly-CSharp");
             var types = GetTypesWithAttribute(typeof(EcsComponentAttribute), assembly);
             foreach (var type in types)
                 Add($"{type}");

@@ -1,0 +1,16 @@
+{
+    "name": "LeoEcsExtensions",
+    "references": [
+        "GUID:b2233918faacc4f8d920c5375e86a992",
+        "GUID:656c2c43d3cfe4855bd40e058874b0be"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
