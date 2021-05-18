@@ -24,7 +24,7 @@ namespace Leopotam.Ecs
 
         public static void Add<T>(this EcsEntity entity, T component) where T : struct
         {
-            entity.Get<T>() = component;
+            entity.Replace(component);
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Leopotam.Ecs;
+using Leopotam.Ecs.UnityIntegration;
 
 namespace Wargon.LeoEcsExtention.Unity
 {
@@ -25,9 +26,17 @@ namespace Wargon.LeoEcsExtention.Unity
         public void ConvertToEntity()
         {
             if (converted) return;
-            entity = worldProvider.world.NewEntity();
+            var world = worldProvider.world;
+            entity = world.NewEntity();
 
             MonoConverter.Execute(ref entity, Components);
+            
+#if UNITY_EDITOR
+            var ecsEntityObserver = gameObject.AddComponent<EcsEntityObserver>();
+            ecsEntityObserver.Entity = entity;
+            ecsEntityObserver.World = world;
+#endif
+            
             converted = true;
             if (destroyComponent) Destroy(this);
             if (destroyObject) Destroy(gameObject);
