@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Reflection;
-using LesEcsPrefabs.Assets.Attributes;
+using LesEcsPrefabs.Assets;
 
 namespace Wargon.LeoEcsExtention.Unity
 {

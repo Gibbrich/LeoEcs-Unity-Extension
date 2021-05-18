@@ -1,6 +1,6 @@
 using System;
 
-namespace LesEcsPrefabs.Assets.Attributes
+namespace LesEcsPrefabs.Assets
 {
     [AttributeUsage(AttributeTargets.Struct)]
     public sealed class EcsComponentAttribute : Attribute
