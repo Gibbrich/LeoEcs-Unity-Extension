@@ -1,12 +1,13 @@
+using Leopotam.Ecs;
 using UnityEngine;
 using Wargon.LeoEcsExtention.Unity;
 
 namespace LesEcsPrefabs.Unity
 {
-    public static class EcsWorldProviderExtensions
+    public static class EcsWorldExtensions
     {
-        public static void Instantiate<T>(
-            this EcsWorldProvider worldProvider,
+        public static T Instantiate<T>(
+            this EcsWorld world,
             T obj,
             Transform parent = null,
             Vector3? position = null,
@@ -37,18 +38,18 @@ namespace LesEcsPrefabs.Unity
             var monoEntity = o.GetComponent<MonoEntity>();
             if (monoEntity)
             {
-                monoEntity.ConvertToEntity();
+                monoEntity.ConvertToEntity(world);
             }
             else
             {
-                var addedMonoEntity = o.gameObject.AddComponent<MonoEntity>();
-                addedMonoEntity.worldProvider = worldProvider;
-                addedMonoEntity.ConvertToEntity();
+                o.gameObject.AddComponent<MonoEntity>().ConvertToEntity(world);
             }
+
+            return o;
         }
         
-        public static void Instantiate(
-            this EcsWorldProvider worldProvider,
+        public static GameObject Instantiate(
+            this EcsWorld world,
             GameObject obj,
             Transform parent = null,
             Vector3? position = null,
@@ -79,14 +80,14 @@ namespace LesEcsPrefabs.Unity
             var monoEntity = o.GetComponent<MonoEntity>();
             if (monoEntity)
             {
-                monoEntity.ConvertToEntity();
+                monoEntity.ConvertToEntity(world);
             }
             else
             {
-                var addedMonoEntity = o.AddComponent<MonoEntity>();
-                addedMonoEntity.worldProvider = worldProvider;
-                addedMonoEntity.ConvertToEntity();
+                o.AddComponent<MonoEntity>().ConvertToEntity(world);
             }
+
+            return o;
         }
     }
 }

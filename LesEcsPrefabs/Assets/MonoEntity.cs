@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
@@ -9,7 +10,7 @@ namespace Wargon.LeoEcsExtention.Unity
     public class MonoEntity : MonoBehaviour
     {
         public EcsEntity entity;
-        public EcsWorldProvider worldProvider;
+        [CanBeNull] public EcsWorldProvider worldProvider;
         [HideInInspector] public int lastIndex = 0;
         [SerializeReference] public List<object> Components = new List<object>();
         public int ComponentsCount => Components.Count;
@@ -20,13 +21,24 @@ namespace Wargon.LeoEcsExtention.Unity
 
         private void Start()
         {
-            ConvertToEntity();
+            if (worldProvider)
+            {
+                ConvertToEntity(worldProvider.world);
+            }
+            else
+            {
+#if DEBUG
+                if (!converted)
+                {
+                    Debug.LogWarning("EcsWorldProvider is null, cannot convert game object to entity");
+                }
+#endif
+            }
         }
 
-        public void ConvertToEntity()
+        public void ConvertToEntity(EcsWorld world)
         {
             if (converted) return;
-            var world = worldProvider.world;
             entity = world.NewEntity();
 
             MonoConverter.Execute(ref entity, Components);
