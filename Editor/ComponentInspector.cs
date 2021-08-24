@@ -7,7 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Wargon.LeoEcsExtention.Unity {
+namespace Wargon.LeoEcsExtention.Unity.Editor {
     public static class ComponentInspector {
 
         private static bool remove;

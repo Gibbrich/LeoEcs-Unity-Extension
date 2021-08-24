@@ -2,7 +2,9 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using Leopotam.Ecs;
+#if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
+#endif
 
 namespace Wargon.LeoEcsExtention.Unity
 {

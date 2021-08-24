@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Wargon.LeoEcsExtention.Unity
+namespace Wargon.LeoEcsExtention.Unity.Editor
 {
     public static class EntityGUI
     {

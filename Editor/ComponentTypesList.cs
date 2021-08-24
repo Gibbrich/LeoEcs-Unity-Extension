@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Reflection;
-using LesEcsPrefabs.Assets;
 
-namespace Wargon.LeoEcsExtention.Unity
+namespace Wargon.LeoEcsExtention.Unity.Editor
 {
     public static class ComponentTypesList {
         private static List<string> Types = new List<string>() { "Add" };

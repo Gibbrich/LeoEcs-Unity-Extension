@@ -2,12 +2,11 @@
 using UnityEngine;
 using System;
 using Leopotam.Ecs;
-using UnityEditor.Compilation;
 
-namespace Wargon.LeoEcsExtention.Unity {
+namespace Wargon.LeoEcsExtention.Unity.Editor {
 
     [CustomEditor(typeof(MonoEntity))]
-    public class MonoEntityEditor : Editor 
+    public class MonoEntityEditor : UnityEditor.Editor 
     {
         private MonoEntity entity;
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace LesEcsPrefabs.Assets
+namespace Wargon.LeoEcsExtention.Unity
 {
     [AttributeUsage(AttributeTargets.Struct)]
     public sealed class EcsComponentAttribute : Attribute

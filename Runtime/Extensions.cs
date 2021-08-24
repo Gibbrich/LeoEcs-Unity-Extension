@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using Leopotam.Ecs;
 
-namespace Leopotam.Ecs
+namespace Wargon.LeoEcsExtention.Unity
 {
     public static class Extensions
     {

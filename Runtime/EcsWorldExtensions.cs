@@ -2,7 +2,7 @@ using Leopotam.Ecs;
 using UnityEngine;
 using Wargon.LeoEcsExtention.Unity;
 
-namespace LesEcsPrefabs.Unity
+namespace Wargon.LeoEcsExtention.Unity
 {
     public static class EcsWorldExtensions
     {
